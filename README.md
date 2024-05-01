@@ -1,6 +1,7 @@
 # Дипломный проект. Задание 3: UI
 
-Автотесты для сервиса  "Stellar Burger". Сайт: `https://stellarburgers.nomoreparties.site/`
+Автотесты для сервиса  "Stellar Burger". 
+Сайт: `https://stellarburgers.nomoreparties.site/`
 
 ## Файлы:
 - allure_results - каталог с отчетом о тестировании
