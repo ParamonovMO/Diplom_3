@@ -35,12 +35,13 @@ class TestOrderFeedPage:
                         8. Удаляем пользователя через API.
                         ''')
     def test_check_user_order_in_job(self, driver, create_new_user, login):
+        order = Order()
         header = HeaderPage(driver)
         feed_order = OrderFeedPage(driver)
         header.click_feed_btn()
-        Order().create_order(create_new_user)
+        order.create_order(create_new_user)
         orders_in_jobs = feed_order.get_orders_in_jobs()
-        user_order = str(Order().get_user_orders(create_new_user))
+        user_order = str(order.get_user_orders(create_new_user))
         assert user_order in orders_in_jobs
 
     @allure.title('заказы пользователя из раздела «История заказов» отображаются на странице «Лента заказов»')
@@ -56,10 +57,11 @@ class TestOrderFeedPage:
                         8. Удаляем пользователя через API.
                         ''')
     def test_check_user_orders_in_orders_history(self, driver, create_new_user, create_order, login):
+        order = Order()
         header = HeaderPage(driver)
         feed_order = OrderFeedPage(driver)
         header.click_feed_btn()
-        user_order = str(Order().get_user_orders(create_new_user))
+        user_order = str(order.get_user_orders(create_new_user))
         orders_history_in_feed = feed_order.get_orders_history()
         assert user_order in orders_history_in_feed
 
@@ -76,10 +78,11 @@ class TestOrderFeedPage:
                         ''')
     @pytest.mark.parametrize('counter', [OrderFeedLocators.dayly_orders_counter, OrderFeedLocators.total_orders_counter])
     def test_update_counter_orders(self, driver, create_new_user, login, counter):
+        order = Order()
         header = HeaderPage(driver)
         feed_order = OrderFeedPage(driver)
         header.click_feed_btn()
         now_counter = int(feed_order.check_counter_orders(counter))
-        Order().create_order(create_new_user)
+        order.create_order(create_new_user)
         new_counter = int(feed_order.check_counter_orders(counter))
         assert new_counter > now_counter
