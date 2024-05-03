@@ -42,8 +42,6 @@ def login(driver, create_new_user):
         login_page.login(create_user_data["email"], create_user_data["password"])
         main_page = MainPage(driver)
         main_page.wait_load_main_page()
-        return driver
-
 
 @pytest.fixture
 def create_order(create_new_user):
