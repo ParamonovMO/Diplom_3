@@ -1,13 +1,16 @@
+class MainUrl:
+    MAIN_URL = 'https://stellarburgers.nomoreparties.site/'
+
+
 class URLS:
     """URLs сервиса"""
-    url_main = 'https://stellarburgers.nomoreparties.site/'                                # Главная страница сервиса
-    url_feed = 'https://stellarburgers.nomoreparties.site/feed'                            # Лента заказов
-    url_login = 'https://stellarburgers.nomoreparties.site/login'                          # Авторизация
-    url_recovery = 'https://stellarburgers.nomoreparties.site/forgot-password'             # Восстановление пароля
-    url_register = 'https://stellarburgers.nomoreparties.site/register'                    # Регистрация пользователя
-    url_profile_area = 'https://stellarburgers.nomoreparties.site/account/profile'         # Личный кабинет
-    url_history_order = 'https://stellarburgers.nomoreparties.site/account/order-history'  # История заказов
-    url_reset_password = 'https://stellarburgers.nomoreparties.site/reset-password'        # Сброс пароля
+    url_feed = 'feed'                            # Лента заказов
+    url_login = 'login'                          # Авторизация
+    url_recovery = 'forgot-password'             # Восстановление пароля
+    url_register = 'register'                    # Регистрация пользователя
+    url_profile_area = 'account/profile'         # Личный кабинет
+    url_history_order = 'account/order-history'  # История заказов
+    url_reset_password = 'reset-password'        # Сброс пароля
 
 
 class Endpoints:

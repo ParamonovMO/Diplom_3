@@ -2,7 +2,7 @@ import pytest
 from selenium import webdriver
 import requests
 
-from data.urls import URLS
+from data.urls import MainUrl
 from helpers.user_data import Person
 from data.urls import Endpoints
 from data.ingredients import Ingredients
@@ -15,11 +15,11 @@ def driver(request):
     if request.param == 'chrome':
         driver = webdriver.Chrome()
         driver.set_window_size(1920, 1080)
-        driver.get(URLS.url_main)
+        driver.get(MainUrl.MAIN_URL)
     elif request.param == 'firefox':
         driver = webdriver.Firefox()
         driver.set_window_size(1920, 1080)
-        driver.get(URLS.url_main)
+        driver.get(MainUrl.MAIN_URL)
     yield driver
     driver.quit()
 
@@ -27,10 +27,10 @@ def driver(request):
 @pytest.fixture
 def create_new_user():
     payload = Person.create_data_correct_user()
-    response = requests.post(URLS.url_main + Endpoints.CREATE_USER, data=payload)
+    response = requests.post(MainUrl.MAIN_URL + Endpoints.CREATE_USER, data=payload)
     yield payload, response
     token = response.json()["accessToken"]
-    requests.delete(URLS.url_main + Endpoints.DELETE_USER, headers={"Authorization": token})
+    requests.delete(MainUrl.MAIN_URL + Endpoints.DELETE_USER, headers={"Authorization": token})
 
 
 @pytest.fixture
@@ -43,11 +43,12 @@ def login(driver, create_new_user):
         main_page = MainPage(driver)
         main_page.wait_load_main_page()
 
+
 @pytest.fixture
 def create_order(create_new_user):
     token = create_new_user[1].json()["accessToken"]
     headers = {'Authorization': token}
-    response = requests.post(URLS.url_main + Endpoints.CREATE_ORDER, headers=headers, data=Ingredients.correct_ingredients_data)
+    response = requests.post(MainUrl.MAIN_URL + Endpoints.CREATE_ORDER, headers=headers, data=Ingredients.correct_ingredients_data)
     return response.json()["order"]["number"]
 
 
