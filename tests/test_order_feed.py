@@ -4,7 +4,7 @@ import pytest
 from pages.main_page import HeaderPage
 from pages.order_feed_page import OrderFeedPage
 from locators.locators import OrderFeedLocators
-from data.helpers import Order
+from helpers.helpers import Order
 
 
 class TestOrderFeedPage:

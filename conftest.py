@@ -3,7 +3,7 @@ from selenium import webdriver
 import requests
 
 from data.urls import URLS
-from data.user_data import Person
+from helpers.user_data import Person
 from data.urls import Endpoints
 from data.ingredients import Ingredients
 from pages.main_page import HeaderPage, MainPage

@@ -1,7 +1,7 @@
 import allure
 
 from data.urls import URLS
-from data.user_data import Person
+from helpers.user_data import Person
 from pages.main_page import MainPage
 from pages.recovery_page import RecoveryPage
 from pages.login_page import LoginPage
