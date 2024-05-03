@@ -12,14 +12,18 @@ class BasePage:
     def get_current_url(self):
         return self.driver.current_url
 
+    # Подождать кликабельности элемента
+    def wait_element_clickable(self, locator):
+        return WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
+
     # Клик по кнопке
     def click_button(self, locator):
-        WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
+        self.wait_element_clickable(locator)
         self.driver.find_element(*locator).click()
 
     # Заполнение формы
     def send_keys_to_field(self, locator, text):
-        WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
+        self.wait_element_clickable(locator)
         self.driver.find_element(*locator).send_keys(text)
 
     # Получить текст элемента
