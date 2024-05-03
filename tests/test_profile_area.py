@@ -21,7 +21,7 @@ class TestProfilelAreaPage:
         header = HeaderPage(driver)
         profile_area = ProfileAreaPage(driver)
         header.click_profile_area_btn()
-        assert profile_area.check_profile_area_form() and driver.current_url == URLS.url_profile_area
+        assert profile_area.check_profile_area_form() and profile_area.get_current_url() == URLS.url_profile_area
 
     @allure.title('Проверка перехода в "История Заказов"')
     @allure.description('''
@@ -38,7 +38,7 @@ class TestProfilelAreaPage:
         profile_area = ProfileAreaPage(driver)
         header.click_profile_area_btn()
         profile_area.click_history_orders_btn()
-        assert profile_area.check_profile_area_form() and driver.current_url == URLS.url_history_order
+        assert profile_area.check_profile_area_form() and profile_area.get_current_url() == URLS.url_history_order
 
     @allure.title('Проверка выхода из аккаунта"')
     @allure.description('''
@@ -56,4 +56,4 @@ class TestProfilelAreaPage:
         login_page = LoginPage(driver)
         header.click_profile_area_btn()
         profile_area.click_exit_btn()
-        assert login_page.check_authorization_form_verification() and driver.current_url == URLS.url_login
+        assert login_page.check_authorization_form_verification() and login_page.get_current_url() == URLS.url_login

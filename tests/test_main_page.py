@@ -18,7 +18,7 @@ class TestMainPage:
         main_page = MainPage(driver)
         main_page.move_to_personal_account_btn_and_click()
         header.click_constructor_btn()
-        assert main_page.check_constructor_form() and driver.current_url == URLS.url_main
+        assert main_page.check_constructor_form() and main_page.get_current_url() == URLS.url_main
 
     @allure.title('Проверка перехода по клику на «Лента заказов»')
     @allure.description('''
@@ -30,7 +30,7 @@ class TestMainPage:
         header = HeaderPage(driver)
         main_page = MainPage(driver)
         header.click_feed_btn()
-        assert main_page.check_orders_feed_form() and driver.current_url == URLS.url_feed
+        assert main_page.check_orders_feed_form() and main_page.get_current_url() == URLS.url_feed
 
     @allure.title('Проверка если кликнуть на ингредиент, появится всплывающее окно с деталями')
     @allure.description('''

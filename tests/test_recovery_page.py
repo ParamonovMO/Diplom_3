@@ -21,7 +21,7 @@ class TestRecoveryPage:
         recovery_page = RecoveryPage(driver)
         main_page.move_to_personal_account_btn_and_click()
         login_page.click_recovery_btn()
-        assert recovery_page.check_recovery_form() and driver.current_url == URLS.url_recovery
+        assert recovery_page.check_recovery_form() and recovery_page.get_current_url() == URLS.url_recovery
 
     @allure.title('Проверка ввода почты и клик по кнопке "Восстановить"')
     @allure.description('''
@@ -39,7 +39,7 @@ class TestRecoveryPage:
         login_page.click_recovery_btn()
         recovery_page.send_email_to_email_field(Person.create_data_correct_user()["email"])
         recovery_page.click_recovery_btn()
-        assert recovery_page.check_save_btn() and driver.current_url == URLS.url_reset_password
+        assert recovery_page.check_save_btn() and recovery_page.get_current_url() == URLS.url_reset_password
 
     @allure.title('Проверка клика по кнопке показать/скрыть пароль делает поле активным — подсвечивает его"')
     @allure.description('''

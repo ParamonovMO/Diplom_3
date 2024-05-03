@@ -8,6 +8,10 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
 
+    # Получить текущий URL
+    def get_current_url(self):
+        return self.driver.current_url
+
     # Клик по кнопке
     def click_button(self, locator):
         WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
