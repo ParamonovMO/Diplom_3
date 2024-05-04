@@ -1,10 +1,12 @@
 from faker import Faker
+import allure
 
 
 class Person:
     """Метод генерации данных для регистрации"""
 
     @staticmethod
+    @allure.step('Генерация email, password, name пользователя')
     def create_data_correct_user():
         faker = Faker('ru_RU')
         data = {
