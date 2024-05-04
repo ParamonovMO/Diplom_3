@@ -14,7 +14,11 @@ class BasePage:
 
     # Подождать кликабельности элемента
     def wait_element_clickable(self, locator):
-        return WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
+        WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(locator))
+
+    # Ожидание загрузки элемента
+    def wait_for_load_element(self, locator):
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(locator))
 
     # Клик по кнопке
     def click_button(self, locator):
@@ -38,18 +42,13 @@ class BasePage:
 
     # Проверка отображения элемента
     def check_element(self, locator):
-        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
+        self.wait_for_load_element(locator)
         return self.driver.find_element(*locator)
 
     # Проверка отображения элемента
     def check_element_is_not_visible(self, locator):
         WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(locator))
         return self.driver.find_element(*locator)
-
-    # Ожидание загрузки элемента
-    def wait_for_load_element(self, locator):
-        return WebDriverWait(self.driver, 20).until(
-            EC.presence_of_element_located(locator))
 
     # Перетаскивание элемента
     def drag_and_drop(self, element_one, element_two):
